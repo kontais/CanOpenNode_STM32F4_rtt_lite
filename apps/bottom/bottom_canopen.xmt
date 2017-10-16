@@ -1,0 +1,40 @@
+; E:\gitee\moba\apps\bottom\bottom_canopen.xmt
+; CAN messages saved by PCAN-View 3.2.4
+;
+; Columns descriptions:
+; ~~~~~~~~~~~~~~~~~~~~~
+; +Message ID
+; |            +Cycle time in ms (0=manual)
+; |            |  +Length of message
+; |            |  |  +Frame type: D)ata or R)emote request
+; |            |  |  |  +Message data
+; |            |  |  |  |
+000h           0  2  D 01h 09h ; 启动远程节点(OK)
+000h           0  2  D 02h 09h ; 停止远程节点(OK)
+000h           0  2  D 80h 09h ; 进入预操作状态(OK)
+000h           0  2  D 81h 09h ; 节点重启，重新初始化参数(OK)
+000h           0  2  D 82h 09h ; 通讯重启(OK)
+209h           0  8  D 12h 34h 56h 78h AAh BBh CCh DDh ; RPDO1
+309h           0  8  D 00h 00h 00h 00h 00h 00h 00h 00h ; RPDO2
+409h           0  8  D 00h 00h 00h 00h 00h 00h 00h 00h ; RPDO3
+509h           0  8  D 00h 00h 00h 00h 00h 00h 00h 00h ; RPDO14
+609h           0  8  D 22h 10h 10h 01h 73h 61h 76h 65h ; 保存到EEPROM
+609h           0  8  D 22h 11h 10h 01h 6Ch 6Fh 61h 64h ; 恢复出厂参数
+609h           0  8  D 22h 08h 20h 01h 03h 00h 00h 00h ; 波特率改为3(250KHz)
+609h           0  8  D 40h 08h 20h 01h 00h 00h 00h 00h ; 读取波特率设置
+609h           0  8  D 22h 07h 20h 01h 15h 00h 00h 00h ; 修改node_id为0x15
+609h           0  8  D 40h 07h 20h 01h 00h 00h 00h 00h ; 读取node_id
+609h           0  8  D 22h 17h 10h 00h 64h 00h 00h 00h ; 修改心跳时间为100ms
+609h           0  8  D 40h 17h 10h 00h 64h 00h 00h 00h ; 读取心跳时间设置
+609h           0  8  D 22h 00h 18h 05h 64h 00h 00h 00h ; 修改tPDO1发送循环时间为100
+609h           0  8  D 22h 00h 18h 01h 09h 00h 00h 80h ; 禁止tPDO1发送
+609h           0  8  D 22h 01h 18h 01h 09h 00h 00h 80h ; 禁止tPDO2发送
+609h           0  8  D 22h 10h 21h 01h 78h 56h 34h 12h ; SDO, index=0x2110, subindex=0x01, 对应&CO_OD_RAM.variableInt32[0]
+609h           0  8  D 22h 10h 21h 02h 78h 56h 34h 12h ; SDO, index=0x2110, subindex=0x02, 对应&CO_OD_RAM.variableInt32[1]
+609h           0  8  D 22h 12h 21h 02h 78h 56h 34h 12h ; SDO, index=0x2112, subindex=0x00, 对应&CO_OD_EEPROM.variableNVInt32[0]
+609h           0  8  D 40h 10h 10h 01h 00h 00h 00h 00h ; SDO读Obj0x0101, Sub0x01,All Store parameters(OK)
+609h           0  8  D 40h 11h 10h 01h 00h 00h 00h 00h ; SDO读Obj0x0101, Sub0x01,All Restore parameters(OK)
+615h           0  8  D 22h 07h 20h 01h 09h 00h 00h 00h ; node_id改回9(node_id=15)
+615h           0  8  D 22h 10h 10h 01h 73h 61h 76h 65h ; 保存到EEPROM(node_id=15)
+615h           0  8  D 40h 07h 20h 01h 00h 00h 00h 00h ; 读取node_id(node_id=15)
+615h           0  8  D 22h 11h 10h 01h 6Ch 6Fh 61h 64h ; 恢复出厂参数(node_id=15)
