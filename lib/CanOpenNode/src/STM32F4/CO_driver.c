@@ -168,16 +168,6 @@ void can_rx_thread(void* parameter, CanRxMsg *RxMsg)
     }
 }
 
-CO_ReturnError_t canInit(CO_CANmodule_t* CANmodule, uint16_t CANbitRate)
-{
-    bxCAN_init(CANmodule->CANbaseAddress, CANbitRate);
-
-    can_task_init((void*)CANmodule);
-    can_recv_callback_install(can_rx_thread);
-    
-    return CO_ERROR_NO;
-}
-
 /******************************************************************************/
 CO_ReturnError_t CO_CANmodule_init(
         CO_CANmodule_t         *CANmodule,

@@ -22,7 +22,7 @@
 609h           0  8  D 22h 11h 10h 01h 6Ch 6Fh 61h 64h ; 恢复出厂参数
 609h           0  8  D 22h 08h 20h 01h 03h 00h 00h 00h ; 波特率改为3(250KHz)
 609h           0  8  D 40h 08h 20h 01h 00h 00h 00h 00h ; 读取波特率设置
-609h           0  8  D 22h 07h 20h 01h 15h 00h 00h 00h ; 修改node_id为0x15
+609h           0  8  D 22h 01h 21h 00h 15h 00h 00h 00h ; 修改node_id为0x15(OK)
 609h           0  8  D 40h 07h 20h 01h 00h 00h 00h 00h ; 读取node_id
 609h           0  8  D 22h 17h 10h 00h 64h 00h 00h 00h ; 修改心跳时间为100ms
 609h           0  8  D 40h 17h 10h 00h 64h 00h 00h 00h ; 读取心跳时间设置
@@ -34,7 +34,7 @@
 609h           0  8  D 22h 12h 21h 02h 78h 56h 34h 12h ; SDO, index=0x2112, subindex=0x00, 对应&CO_OD_EEPROM.variableNVInt32[0]
 609h           0  8  D 40h 10h 10h 01h 00h 00h 00h 00h ; SDO读Obj0x0101, Sub0x01,All Store parameters(OK)
 609h           0  8  D 40h 11h 10h 01h 00h 00h 00h 00h ; SDO读Obj0x0101, Sub0x01,All Restore parameters(OK)
-615h           0  8  D 22h 07h 20h 01h 09h 00h 00h 00h ; node_id改回9(node_id=15)
+615h           0  8  D 22h 01h 21h 00h 09h 00h 00h 00h ; node_id从0x15改回0x09(OK)
 615h           0  8  D 22h 10h 10h 01h 73h 61h 76h 65h ; 保存到EEPROM(node_id=15)
 615h           0  8  D 40h 07h 20h 01h 00h 00h 00h 00h ; 读取node_id(node_id=15)
 615h           0  8  D 22h 11h 10h 01h 6Ch 6Fh 61h 64h ; 恢复出厂参数(node_id=15)

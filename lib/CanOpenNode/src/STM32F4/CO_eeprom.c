@@ -249,6 +249,12 @@ CO_ReturnError_t CO_EE_init_1(
     /* read the CO_OD_ROM from EEPROM and verify CRC */
     
     ee->OD_EEPROMWriteEnable = true;
+    
+    printf("EEPROM used size = %d\n", OD_EEPROMSize);
+    if (OD_EEPROMSize > at24c16_size()) {
+        printf("ERROR! exceed EEPROM size(max.%d)\n", at24c16_size()); 
+        return CO_ERROR_ILLEGAL_ARGUMENT;
+    }
 
     return CO_ERROR_NO;
 }

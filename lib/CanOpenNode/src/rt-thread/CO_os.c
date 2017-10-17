@@ -29,8 +29,8 @@ ALIGN(OS_ALIGN_SIZE) static uint8_t can_recv_task_stack[CAN_RECV_TASK_STACK_SIZE
 static os_task_t can_send_task;
 ALIGN(OS_ALIGN_SIZE) static uint8_t can_send_task_stack[CAN_SEND_TASK_STACK_SIZE];
 
-
 void (*can_recv_callback)(void* parameter, CanRxMsg *recv_msg) = NULL;
+
 void can_recv_callback_install(void (*callback)(void* parameter, CanRxMsg *recv_msg))
 {
     can_recv_callback = callback;

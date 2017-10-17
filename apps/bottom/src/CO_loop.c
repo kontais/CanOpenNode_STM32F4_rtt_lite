@@ -91,6 +91,7 @@ int CO_loop(void)
 
             /* increase variable each startup. Variable is stored in EEPROM. */
             OD_powerOnCounter++;
+            printf("PowerOn count = %d\n", OD_powerOnCounter);
             reset = CO_RESET_COMM;
             break;
 
@@ -101,7 +102,7 @@ int CO_loop(void)
             /* disable CAN and CAN interrupts */
 
             /* initialize CANopen */
-            err = CO_init((int32_t)CAN1/* CAN module address */, 9/* NodeID */, 125 /* bit rate */);
+            err = CO_init((int32_t)CAN1, OD_CANNodeID, OD_CANBitRate);
             if(err != CO_ERROR_NO) {
                 CO_errorReport(CO->em, CO_EM_MEMORY_ALLOCATION_ERROR, CO_EMC_SOFTWARE_INTERNAL, err);
                 while(1);
