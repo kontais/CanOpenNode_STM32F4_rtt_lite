@@ -278,7 +278,6 @@ void CO_EE_process(CO_EE_t *ee){
         /* if bytes in EEPROM and in RAM are different, then write to EEPROM */
         if(eeData != RAMdata){
             EE_writeByteNoWait(RAMdata, i);
-//            printf("EEPROM[%d] wirete 0x%x\n", i, RAMdata);
         }
     }
 }
