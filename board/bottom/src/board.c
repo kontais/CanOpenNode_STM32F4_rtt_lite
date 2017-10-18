@@ -51,4 +51,10 @@ void board_init(void)
     uart4_init();
 }
 
+void board_reset(void)
+{
+    NVIC_SystemReset();
+    __disable_irq();
+    while (1);          // wait for wdog reset
+}
 /*@}*/

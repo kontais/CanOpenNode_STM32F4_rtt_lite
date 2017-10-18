@@ -44,6 +44,7 @@
  * to do so, delete this exception statement from your version.
  */
 #include <stdio.h>
+#include <board.h>
 
 #include "CANopen.h"
 #include <CO_os.h>
@@ -75,7 +76,7 @@ static void tmrTask_thread(void)
     }
 }
 
-static CO_NMT_reset_cmd_t reset = CO_RESET_APP;
+static CO_NMT_reset_cmd_t reset = CO_RESET_INIT;
 static uint32_t timer1msPrevious, timer1msCopy, timer1msDiff;
 
 int CO_loop(void)
@@ -83,7 +84,7 @@ int CO_loop(void)
     CO_ReturnError_t err;
 
     switch (reset) {
-        case CO_RESET_APP:
+        case CO_RESET_INIT:
             /* Configure microcontroller. */
 
             /* initialize EEPROM */
@@ -146,8 +147,12 @@ int CO_loop(void)
             }
             break;
 
+        case CO_RESET_APP:
+            board_reset();
+            break;
+
         default:
-            printf("CanOpenNode reset = %d\n", reset);
+            printf("Unsupport CO_NMT_reset_cmd_t %d\n", reset);
             reset = CO_RESET_NOT;
             break;
     }

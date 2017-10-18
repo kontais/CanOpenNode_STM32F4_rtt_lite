@@ -19,5 +19,6 @@
 #include <stm32f4xx.h>
 
 void board_init(void);
+void board_reset(void);
 
 #endif  /* _BOARD_H_ */
