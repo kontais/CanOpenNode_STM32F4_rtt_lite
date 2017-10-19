@@ -889,9 +889,11 @@ int16_t CO_TPDOsend(CO_TPDO_t *TPDO){
     ppODdataByte = &TPDO->mapPointer[0];
 
     /* Copy data from Object dictionary. */
+    CO_LOCK_OD();
     for(; i>0; i--) {
         *(pPDOdataByte++) = **(ppODdataByte++);
     }
+    CO_UNLOCK_OD();
 
     TPDO->sendRequest = 0;
 
@@ -927,9 +929,11 @@ void CO_RPDO_process(CO_RPDO_t *RPDO, bool_t syncWas){
             /* Copy data to Object dictionary. If between the copy operation CANrxNew
              * is set to true by receive thread, then copy the latest data again. */
             RPDO->CANrxNew[bufNo] = false;
+            CO_LOCK_OD();
             for(; i>0; i--) {
                 **(ppODdataByte++) = *(pPDOdataByte++);
             }
+            CO_UNLOCK_OD();
 
 #ifdef RPDO_CALLS_EXTENSION
             if(RPDO->SDO->ODExtensions){
